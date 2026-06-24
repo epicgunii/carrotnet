@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>CARROTNET // HACKEADO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:100%; height:100%; }
+  body {
+    background: #050a0e;
+    font-family: 'Share Tech Mono', monospace;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    margin-bottom: 4rem;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+  .logo .carrot { color:#ff8c00; text-shadow:0 0 10px #ff8c00; }
+  .logo .net { color:#ff3355; text-shadow:0 0 10px #ff3355; }
+  .word {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    color: #ff3355;
+    text-shadow: 0 0 30px #ff3355, 0 0 70px #cc2244;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    white-space: nowrap;
+    animation: blink 0.7s step-end infinite;
+  }
+  .sub {
+    font-size: 0.65rem;
+    color: #446644;
+    letter-spacing: 0.2em;
+    margin-top: 3rem;
+    white-space: nowrap;
+  }
+  .dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: #ff3355;
+    border-radius: 50%;
+    margin-right: 7px;
+    box-shadow: 0 0 8px #ff3355;
+    animation: pulse 2s ease infinite;
+    vertical-align: middle;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 4px #ff3355; }
+    50% { box-shadow: 0 0 14px #ff3355; }
+  }
+</style>
+</head>
+<body>
+  <div class="logo"><span class="carrot">CARROT</span><span class="net">NET</span></div>
+  <div class="word" id="word">HACKEADO</div>
+  <div class="sub"><span class="dot"></span>SISTEMA COMPROMETIDO</div>
+  <script>
+    function fitText() {
+      const el = document.getElementById('word');
+      const maxW = window.innerWidth * 0.88;
+      const maxH = window.innerHeight * 0.35;
+      let size = 200;
+      el.style.fontSize = size + 'px';
+      while ((el.scrollWidth > maxW || el.scrollHeight > maxH) && size > 10) {
+        size -= 2;
+        el.style.fontSize = size + 'px';
+      }
+    }
+    window.addEventListener('load', fitText);
+    window.addEventListener('resize', fitText);
+  </script>
+</body>
+</html>
