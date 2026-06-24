@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARROTNET // EL CATFISH</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+  :root {
+    --bg: #050a0e;
+    --bg2: #0a1520;
+    --bg3: #0d1f2d;
+    --accent: #00ff88;
+    --accent-dim: #00cc66;
+    --text: #c8e6c9;
+    --text-dim: #557755;
+    --border: #1a3a2a;
+    --red: #ff3355;
+    --cyan: #00ccff;
+    --yellow: #ffcc00;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+  }
+
+  .logo .carrot { color: #ff8c00; text-shadow: 0 0 10px #ff8c00; }
+  .logo .net { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+
+  .team-badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    letter-spacing: 0.15em;
+    background: rgba(0,255,136,0.08);
+    color: var(--accent);
+    border: 1px solid #00ff8844;
+  }
+
+  .role-card {
+    border: 1px solid #00ff8844;
+    background: var(--bg2);
+    padding: 2rem 1.75rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0,255,136,0.08);
+  }
+
+  .role-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  .role-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    font-weight: 900;
+    color: var(--accent);
+    text-shadow: 0 0 20px var(--accent-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+  }
+
+  .role-subtitle {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-dim), transparent);
+    margin-bottom: 1.5rem;
+  }
+
+  .role-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    padding: 0.12rem 0.45rem;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    margin-right: 0.3rem;
+  }
+
+  .tag-activa { background: rgba(0,204,255,0.12); color: #00ccff; border: 1px solid #006688; }
+  .tag-pasiva { background: rgba(255,204,0,0.1); color: #ffcc00; border: 1px solid #886600; }
+  .tag-info { background: rgba(0,255,136,0.1); color: #00cc66; border: 1px solid #004422; }
+  .tag-unico { background: rgba(255,51,85,0.12); color: #ff3355; border: 1px solid #882233; }
+
+  .role-body {
+    font-size: 0.85rem;
+    line-height: 1.85;
+    color: var(--text);
+  }
+
+  .highlight { color: #00ccff; }
+  .highlight-red { color: #ff3355; }
+  .highlight-yellow { color: #ffcc00; }
+  .highlight-accent { color: var(--accent); }
+
+  .note-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--yellow);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .note-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    color: var(--yellow);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .footer {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .blink { animation: blink 1s step-end infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-bar">
+    <div class="logo"><span class="carrot">CARROT</span><span class="net">NET</span></div>
+    <div class="team-badge">EQUIPO BUENO</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-name">El Catfish</div>
+    <div class="role-subtitle">// Anomalía en el sistema — 01001110 //</div>
+    <div class="divider"></div>
+    <span class="role-tag tag-pasiva">PASIVA</span><span class="role-tag tag-info">INFORMACIÓN</span>
+    <div class="role-body">
+      Eres un jugador completamente bueno. Sin embargo, el sistema te detecta como una amenaza ante <span class="highlight-red">cualquier herramienta de análisis</span>. Aparecerás como comprometido ante cualquier jugador que intente analizarte, seas inocente o no.<br><br>
+      Lo que sí sabes desde el inicio: conoces la identidad del jugador con el rol de <span class="highlight-accent">Stalker</span>. Esa información es tuya desde el principio.<br><br>
+      Ten en cuenta que esa alianza natural puede cambiar a lo largo de la partida.
+    </div>
+  </div>
+
+    <div class="note-box">
+      <div class="note-label">// NOTA DEL SISTEMA //</div>
+      Tu carta ya te advierte: el sistema puede no verte como realmente eres. Tendrás que gestionar esa desconfianza y decidir cuándo y cómo usarla a tu favor.
+    </div>
+  <div class="footer">CARROTNET_CORE // ROL ASIGNADO // <span class="blink">█</span></div>
+
+</div>
+</body>
+</html>
