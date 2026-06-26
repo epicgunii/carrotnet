@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>CARROTNET // PISTA</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:100%; height:100%; }
+  body {
+    background: #050a0e;
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    margin-bottom: 3rem;
+    opacity: 0.7;
+  }
+  .logo .carrot { color:#ff8c00; text-shadow:0 0 10px #ff8c00; }
+  .logo .net { color:#00ff88; text-shadow:0 0 10px #00ff88; }
+  .label {
+    font-size: 0.6rem;
+    color: rgba(0,255,136,0.4);
+    letter-spacing: 0.35em;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .message {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+    line-height: 2;
+    color: #c8e6c9;
+    max-width: 480px;
+    letter-spacing: 0.05em;
+  }
+  .highlight {
+    color: #00ff88;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00cc66;
+  }
+  .sub {
+    font-size: 0.6rem;
+    color: #334433;
+    letter-spacing: 0.25em;
+    margin-top: 3rem;
+  }
+</style>
+</head>
+<body>
+  <div class="logo"><span class="carrot">CARROT</span><span class="net">NET</span></div>
+  <div class="label">// INFORMACIÓN CLASIFICADA — RESISTENCIA //</div>
+  <div class="message">
+    Me suena haber encontrado<br>la respuesta en el <span class="highlight">nodo</span>
+  </div>
+  <div class="sub">// ARCHIVO DESCIFRADO — USO RESTRINGIDO //</div>
+</body>
+</html>
